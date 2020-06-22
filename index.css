@@ -70,3 +70,20 @@ button{
     padding: 5px 10px;
     border: none;
 }
+.dark-mode{
+    background-color: #333333;
+    color: white;
+}
+.dark-mode input{
+    background-color: black;
+    color: white;
+}
+#dark{
+    float: left;
+    bottom: 0;
+    left: 0;
+    position: absolute;
+}
+input{
+    margin: auto;
+}

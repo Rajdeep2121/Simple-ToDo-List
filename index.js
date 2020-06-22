@@ -51,3 +51,7 @@ function delTaskNotCom(id){
     var parent = document.querySelector(".Completed")
     parent.removeChild(ele)
 }
+function darkMode(){
+    var ele = document.body
+    ele.classList.toggle("dark-mode")
+}

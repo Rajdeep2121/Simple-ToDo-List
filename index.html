@@ -19,7 +19,7 @@
             <div class="heading">
                 <h2>New Task</h2>
                 <div class="addTask">
-                    <input type="text" onkeypress="pressed(event)" id="taskAdd" placeholder="Enter task"><br>
+                    <input class="form-control" style="width: 300px;text-align: center;" type="text" onkeypress="pressed(event)" id="taskAdd" placeholder="Enter task"><br>
                     <button type="submit" onclick="newTask()">Submit</button>
                     <button type="submit" onclick="location.reload()">Clear</button>
                 </div>
@@ -36,6 +36,8 @@
             </div>
         </div>
     </div>
+
+    <button id="dark" onclick="darkMode()">Dark Mode</button>
     <script src="index.js"></script>
 </body>
 </html>
