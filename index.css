@@ -1,0 +1,72 @@
+body{
+    text-align: center;
+    font-family: Proxima;
+    background-color: whitesmoke;
+}
+p{
+    animation: slide-up 0.4s ease-out;
+    padding-bottom: 20px;
+    border: 1px solid teal;
+    background-color: teal;
+    margin-left: 5%;
+    margin-right: 5%;
+    color: white;
+    border-radius: 10px;
+    padding-top: 10px;
+    font-size: 25pt;
+}
+@keyframes slide-up {
+    0%{opacity: 0; transform: translateY(10px)}
+    100%{opacity: 1; transform: translateY(0px)}
+}
+a{
+    font-size: 20pt;
+}
+a i{
+    color: white;
+    right: 0;
+}
+a i:hover{
+    color: #4285F4;
+    cursor: pointer;
+    background-color: teal;
+}
+#del:hover{
+    color: #de5246; 
+}
+@font-face {
+    font-family: Kaushan;
+    src: url('fonts/KaushanScript-Regular.ttf');
+}
+@font-face {
+    font-family: Proxima;
+    src: url('fonts/ProximaNovaBold.otf');
+}
+h2{
+    font-family: Kaushan;
+    font-weight: bold;
+}
+h3{
+    margin-top: 100px;
+    margin-bottom: 20px;
+    text-decoration: underline;
+}
+span{
+    border: 3px solid black;
+    padding: 10px;
+    border-radius: 10px;
+}
+span:hover{
+    background-color: black;
+    color: white;
+    text-decoration: underline;
+    cursor: pointer;
+    transition: 0.5s ease-out;
+}
+button{
+    margin-top: 10px;
+    background-color: #4285F4;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+}
