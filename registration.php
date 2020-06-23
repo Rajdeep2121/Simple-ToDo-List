@@ -1,3 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+.container{
+    width: 60%;
+    border: 1px solid black;
+    margin-top: 7%;
+    background-color: whitesmoke;
+    border-radius: 10px;
+    padding: 10px;
+}
+body{
+    background-color: black;
+}
+</style>
+    <title>Login Page</title>
+</head>
+<body>
+    
+<div class="container" style="width: 65%;">
+        <div class="login-box">
+            <div class="row">
+                <div class="col-md-6 border-right">
+                    <h2>Login</h2>
+                    <form action="validation.php" method="POST">
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="text" name="email" placeholder="Email" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>Password</label>
+                            <input type="password" name="password" placeholder="Password" class="form-control">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Login</button>
+                    </form>
+                </div>
+                <div class="col-md-6 border-left">
+                    <h2>Register</h2>
+                    <form action="registration.php" method="POST">
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="text" name="email" placeholder="Email" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>Name</label>
+                            <input type="text" name="name" placeholder="Name" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>Password</label>
+                            <input type="password" name="password" placeholder="Password" class="form-control">
+                        </div>
 <?php
 session_start();
 // header('location:login.php');
@@ -30,14 +85,23 @@ $s = "select * from task where email='$email'";
 $result = mysqli_query($con,$s);
 $num = mysqli_num_rows($result);
 if($num==1){
-    echo "<h3 style='font-family:Segoe UI;'>Email already exists</h3>";
+    echo "<b style='color: red;'>Email already exists</b>";
     echo "<script>setTimeout(\"location.href = 'login.php';\",1500);</script>";
 }
 else{
     $reg = "insert into task(name,password,email) values ('$name','$pass','$email')";
     mysqli_query($con,$reg);
-    echo "<h3 style='font-family:Segoe UI;'>Registration successful</h3><h4 style='font-family:Segoe UI;'>Login again!</h4>";
+    echo "<b style='color: green;'>Registration successful<br>Login again!</b>";
     echo "<script>setTimeout(\"location.href = 'login.php';\",1500);</script>";
 }
 
-?>
+?><br>
+                    <button type="submit" class="btn btn-primary">Register</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
