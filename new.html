@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+/*  
+Inspired to recreate the text effects as seen on the 
+promo pages for Apple's new (2018-09-12) iPhone lineup, 
+as seen at https://www.apple.com/iphone-xr/
+
+This is refined a bit, but mostly literally lifting the
+code/techniques straight from the page as-is. 
+
+- The `-webkit` prefix is a good thing here. It allows
+  for a better fallback for *very* old browsers. 
+- You'll want to use a nice "chunky" font, if you want the 
+  texture to show through well, as they pull off here. 
+- Notice that the "white" header and text are inlined, 
+  instead of their default `display: block`, so they can 
+  get that striking white semantic heading in there. Clever!
+- Don't forget that you can apply pure CSS gradients as 
+  a background (instead of images), or other fancy things, 
+  like video, gifs. 
+
+
+Shoulders of giants: See some references to other material, 
+that covers this far better than myself, by checking out
+the related blog post that I recently added here: 
+
+https://www.tommygeorge.com/blog/css-how-to-apple-iphone-xr-masked-text/
+
+*/
+
+body { 
+  background-color: black;
+  /* This is doing nothing but centering the text in the screen,
+    so it looks decent in this pen.. */
+  width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.big-type { 
+  /* Copied almost wholesale from the Apple site CSS; changed the font-stack */
+  font-size: 64px;
+  line-height: 1.0625; /* The height Apple used to tighten up the spacing a bit. */
+  font-weight: 600; /* Nice, chunky, bold! */
+  font-family: "Helvetica Neue","Helvetica","Arial",sans-serif;
+}
+
+.masked-copy { 
+  -webkit-background-clip: text;
+  color: transparent !important;
+}
+
+.masked-copy h2 { 
+  color: white;
+  display: inline;
+  font: inherit;
+}
+
+.masked-copy p {
+  display: inline;
+}
+
+.texture-orange {
+  color: #e5895f;
+  background-image: url('pics/2.jpg');
+}
+    </style>
+</head>
+<body>
+    
+    <div class="masked-copy texture-orange big-type">
+        <h2>Intelligent A12 Bionic.</h2>
+        <p>This is the smartest, most powerful chip in a smartphone, with our next-generation Neural Engine. For amazing augmented reality experiences. Incredible portraits with Depth Control. And speed and fluidity in everything you do.</p>
+      </div>
+      
+
+</body>
+</html>
