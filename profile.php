@@ -19,7 +19,7 @@ if(empty($_SESSION['logged_in'])){
 body{
     text-align: center;
     font-family: HelveticaNueu;
-    background-color: #333333;
+    background-color: black;
     color: white;
 }
 p{
@@ -146,20 +146,12 @@ input{
                 <div class="heading">
                     <div class="addTask">
                         <form action="newTask.php" method="POST">
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <h2>New Task</h2>
                                 <input class="form-control" style="width: 300px;text-align: center;" type="text" name="task" placeholder="Enter task"><br>
                                 <button type="submit" >Add new Task</button>
                             </div>
                         </form>
-                        <form action="completed.php" method="POST">
-                            <div class="col-md-6">
-                                <h2>Completed Task</h2>
-                                <input class="form-control" style="width: 300px;text-align: center;" type="text" name="comptask" placeholder="Enter task"><br>
-                                <button type="submit" >Task Completed</button>
-                            </div>
-                        </form>
-                        
                     </div>
                 </div>
             </div>
@@ -186,7 +178,8 @@ else{
         echo "<div class='col-md-12' id='containTask' style='margin-bottom: 30px;margin-top: 30px;'>";
         echo "<p id='".$id."'>".$id.".  ".$row['text']."</p>";
         ?>
-        <a href="delnotComp.php?text=<?php echo $row['text'] ?>">Delete</a>
+        <a href="deleteTask/delnotComp.php?text=<?php echo $row['text'] ?>">Delete</a>
+        <a href="taskComp.php?text=<?php echo $row['text'] ?>">Completed</a>
         <?php
         $id = $id + 1;
         // echo ;
@@ -220,7 +213,7 @@ else{
             echo "<div class='col-md-12' id='containTask' style='margin-bottom: 30px;margin-top: 30px;'>";
             echo "<p id='".$id."'>".$row['text']."</p>";
             ?>
-            <a href="delComp.php?text=<?php echo $row['text'] ?>" >Delete</a>
+            <a href="deleteTask/delComp.php?text=<?php echo $row['text'] ?>" >Delete</a>
             <?php
             $id = $id + 1;
             echo "</div>";
