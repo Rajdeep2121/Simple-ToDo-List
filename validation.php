@@ -76,7 +76,7 @@ if($num==1){
 }
 else if($num==0){
     echo "<b style='color: red;'>Email doesn't exist or the Password is wrong!</b>";
-    echo "<script>setTimeout(\"location.href = 'login.php';\",1500);</script>";
+    echo "<script>setTimeout(\"location.href = 'index.php';\",1500);</script>";
 }
 ?>
 <br>

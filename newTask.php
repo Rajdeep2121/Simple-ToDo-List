@@ -1,8 +1,7 @@
 <?php
 session_start();
-// header('location:login.php');
 $con = mysqli_connect('localhost','root','');
-// mysqli_select_db($con,'newProj');
+
 // create db if it doesnt exist
 $createdb = "create database newProj";
 if($con->query($createdb) === TRUE){

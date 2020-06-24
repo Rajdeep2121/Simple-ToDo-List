@@ -2,7 +2,7 @@
 <?php
 session_start();
 if(empty($_SESSION['logged_in'])){
-    echo "You are not logged in. <a href='login.html'>Click here</a> to login";
+    echo "You are not logged in. <a href='index.php'>Click here</a> to login";
     exit(1);
 }
 ?>
@@ -18,23 +18,28 @@ if(empty($_SESSION['logged_in'])){
 
 body{
     text-align: center;
-    font-family: HelveticaNueu;
-    background-color: black;
-    color: white;
+    font-family: Proxima;
+    background-color: whitesmoke;
+    color: black;
+}
+.border-left{
+    border-left: 1px solid lightgrey;
+}
+.border-right{
+    border-right: 1px solid lightgrey;
 }
 p{
-    animation: slide-up 0.4s ease-out;
+    font-size: 20pt;
+    margin-bottom: 30px;
+}
+#containTask{
+    animation: slide-up 1s ease-out;
     padding-bottom: 20px;
-    margin-left: 5%;
-    margin-right: 5%;
-    background: url('pics/3.jpg');
-    background-position: right;
-    background-size: cover;
-    background-repeat: no-repeat;
-    color: black;
+    background-color: #00695c;
+    color: whitesmoke;
     border-radius: 10px;
     padding-top: 10px;
-    font-size: 25pt;
+    /* font-size: 25pt; */
 }
 @keyframes slide-up {
     0%{opacity: 0; transform: translateY(10px)}
@@ -43,12 +48,17 @@ p{
 
 a{
     color: white;
-    margin-bottom: 20px;
+    padding: 10px;
+    text-decoration: underline;
+    animation: blinking 2s infinite;
+}
+@keyframes blinking{
+    0%{border: 1px solid white;}
+    50%{background-color: white;color: black;border: 1px solid whitesmoke;padding: 9px;}
+    100%{border: 1px solid white;}
 }
 a:hover{
-    color: white;
-    font-size: 15pt;
-    transition: 0.4s ease-in;
+    color: black;
 }
 @font-face {
     font-family: Kaushan;
@@ -67,6 +77,7 @@ h3{
     margin-bottom: 20px;
     text-decoration: underline;
 }
+/* COMPLETED/NOT COMPLETED HEADING */
 span{
     border: 3px solid black;
     padding: 10px;
@@ -83,27 +94,21 @@ button{
     margin-top: 10px;
     background-color: #4285F4;
     color: white;
-    padding: 5px 10px;
     border: none;
 }
 
 input{
     margin: auto;
 }
-#logout{
+#log{
     float: right;
-    top: 0;
 }
-
+/* TEXT DECORATION */
 .big-type h2{
     font-size: 40px;
     line-height: 1.0625;
     font-weight: 600; 
     font-family: "Helvetica Neue","Helvetica","Arial",sans-serif;
-}
-.texture-orange{
-    color: #e5895f;
-    background-image: url('pics/2.jpg');
 }
 .texture-blue{
     color: #e5895f;
@@ -116,21 +121,19 @@ input{
 #profileHead{
     margin-bottom: 50px;
 }
-/* #containTask p{
-    background-color: wheat;
-    /* background-image: url('pics/1.jpg'); */
-    color: black;
-    background-position: center;
-} */
+.newtaskbtn{
+    padding: 5px 10px;
+    margin-bottom: 30px;
+}
 </style>
 
     </head>
     <body>
         <div class="logout" style="float:right;">
-            <button id="log" type="submit" onclick="window.location.href='logout.php'">Logout</button>
+            <button id="log" class="btn btn-primary" type="submit" onclick="window.location.href='logout.php'">Logout</button>
         </div>
 
-        <div class="masked-copy texture-orange big-type" id="profileHead">
+        <div class="masked-copy texture-blue big-type" id="profileHead">
             <?php
                  echo "<h2>Welcome ",$_SESSION['name'],"</h2>"; 
             ?>
@@ -149,14 +152,14 @@ input{
                             <div class="col-md-12">
                                 <h2>New Task</h2>
                                 <input class="form-control" style="width: 300px;text-align: center;" type="text" name="task" placeholder="Enter task"><br>
-                                <button type="submit" >Add new Task</button>
+                                <button type="submit" class='newtaskbtn'>Add new Task <i class="fa fa-plus-circle" aria-hidden="true"></i></button>
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
             <div class="col-md-6 border-right">
-                <div class="notCompleted ">
+                <div class="notCompleted">
                     <div class="masked-copy texture-blue big-type">
                         <h3><span>NOT COMPLETED</span></h3>
                     </div>
@@ -176,10 +179,10 @@ if($records==''){
 else{
     while($row = mysqli_fetch_array($records)){
         echo "<div class='col-md-12' id='containTask' style='margin-bottom: 30px;margin-top: 30px;'>";
-        echo "<p id='".$id."'>".$id.".  ".$row['text']."</p>";
+        echo "<p>".$row['text']."</p>";
         ?>
-        <a href="deleteTask/delnotComp.php?text=<?php echo $row['text'] ?>">Delete</a>
-        <a href="taskComp.php?text=<?php echo $row['text'] ?>">Completed</a>
+        <a href="deleteTask/delnotComp.php?text=<?php echo $row['text'] ?>">Delete <i class="fa fa-trash-o"></i></a>
+        <a href="taskComp.php?text=<?php echo $row['text'] ?>">Completed <i class="fa fa-check-circle" aria-hidden="true"></i></a>
         <?php
         $id = $id + 1;
         // echo ;
@@ -213,7 +216,8 @@ else{
             echo "<div class='col-md-12' id='containTask' style='margin-bottom: 30px;margin-top: 30px;'>";
             echo "<p id='".$id."'>".$row['text']."</p>";
             ?>
-            <a href="deleteTask/delComp.php?text=<?php echo $row['text'] ?>" >Delete</a>
+            <a href="deleteTask/delComp.php?text=<?php echo $row['text'] ?>" >Delete <i class="fa fa-trash-o"></i></a>
+            <a href="tasknotComp.php?text=<?php echo $row['text'] ?>">Not Completed <i class="fa fa-times-circle" aria-hidden="true"></i></a>
             <?php
             $id = $id + 1;
             echo "</div>";

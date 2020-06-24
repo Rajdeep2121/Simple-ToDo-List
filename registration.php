@@ -55,7 +55,6 @@ body{
                         </div>
 <?php
 session_start();
-// header('location:login.php');
 $con = mysqli_connect('localhost','root','');
 // create db if it doesnt exist
 $createdb = "create database newProj";
@@ -86,13 +85,13 @@ $result = mysqli_query($con,$s);
 $num = mysqli_num_rows($result);
 if($num==1){
     echo "<b style='color: red;'>Email already exists</b>";
-    echo "<script>setTimeout(\"location.href = 'login.php';\",1500);</script>";
+    echo "<script>setTimeout(\"location.href = 'index.php';\",1500);</script>";
 }
 else{
     $reg = "insert into task(name,password,email) values ('$name','$pass','$email')";
     mysqli_query($con,$reg);
     echo "<b style='color: green;'>Registration successful<br>Login again!</b>";
-    echo "<script>setTimeout(\"location.href = 'login.php';\",1500);</script>";
+    echo "<script>setTimeout(\"location.href = 'index.php';\",1500);</script>";
 }
 
 ?><br>
