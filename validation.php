@@ -39,7 +39,29 @@ body{
 session_start();
 
 $con = mysqli_connect('localhost','root','');
+// mysqli_select_db($con,'newProj');
+// create db if it doesnt exist
+$createdb = "create database newProj";
+if($con->query($createdb) === TRUE){
+    echo "";
+}
+else{
+    echo "";
+}
+
 mysqli_select_db($con,'newProj');
+
+// create table if it doesnt exist
+$create = "create table task(name varchar(255),password varchar(255),email varchar(255), PRIMARY KEY(email))";
+if(mysqli_query($con, $create)){
+    echo "";
+}
+else{
+    echo "";
+}
+
+
+
 $email = $_POST['email'];
 $pass = $_POST['password'];
 $s = "select * from task where email='$email' && password='$pass'";
